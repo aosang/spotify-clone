@@ -1,9 +1,8 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import Sidebar from './components/Sidebar'
-
-const inter = Inter({ subsets: ['latin'], display: 'swap' })
+import SupabaseProvider from '../providers/SupabaseProvider'
+import UserProvider from '../providers/UserProvider'
 
 export const metadata: Metadata = {
   title: 'Spotify Clone',
@@ -17,10 +16,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <Sidebar>
-          {children}
-        </Sidebar>
+      <body>
+        <SupabaseProvider>
+          <UserProvider>
+            <Sidebar>{children}</Sidebar>
+          </UserProvider>
+        </SupabaseProvider>
+        
       </body>
     </html>
   )
