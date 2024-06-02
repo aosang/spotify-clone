@@ -1,10 +1,12 @@
-import type { Metadata } from 'next'
+
 import './globals.css'
 import Sidebar from './components/Sidebar'
-import SupabaseProvider from '../providers/SupabaseProvider'
+import SupabaseProvider from '@/providers/SupabaseProvider'
 import UserProvider from '../providers/UserProvider'
+import ModalProvider from '@/providers/ModalProvider'
+import ToasterProvider from '@/providers/ToasterProvider'
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Spotify Clone',
   description: 'Listen to music!',
 }
@@ -17,12 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ToasterProvider />
         <SupabaseProvider>
           <UserProvider>
-            <Sidebar>{children}</Sidebar>
+            <ModalProvider />
+              <Sidebar>{children}</Sidebar>
           </UserProvider>
         </SupabaseProvider>
-        
       </body>
     </html>
   )
