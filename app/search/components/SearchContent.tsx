@@ -2,6 +2,7 @@
 
 import { Song } from "@/types"
 import MediaItem from "@/app/components/MediaItem"
+import LikeButton from '@/app/components/LikeButton'
 
 interface SearchContenProps {
   songs: Song[]
@@ -25,6 +26,7 @@ const SearchContent: React.FC<SearchContenProps> = ({
             <MediaItem onClick={() => {}} data={song} />
           </div>
           {/* add like button here */}
+          <LikeButton songId={song.id} />
         </div>
       ))}
     </div>
